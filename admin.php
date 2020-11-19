@@ -1,3 +1,12 @@
+<?php
+$db=mysqli_connect('localhost','root','L@Platef0rme','moduleconnexion');
+$req="SELECT * FROM `utilisateurs`";
+$query=mysqli_query($db,$req);
+$assoc_results=mysqli_fetch_assoc($query);
+$all_results=mysqli_fetch_all($query);
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,12 +27,19 @@
         <li class="nav-item">
             <a class="nav-link active" href="index.php">Accueil</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="inscription.php">Inscription</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="connexion.php">Connexion</a>
-        </li>
+        <?php
+        if(!isset($_SESSION['login'])){
+            echo "<li class='nav-item'><a class='nav-link' href='inscription.php'>Inscription</a></li>";
+            echo  "<li class='nav-item'>";
+            echo "<a class='nav-link' href='connexion.php'>Connexion</a></li>";
+        }else{
+            echo "<li class='nav-item'><form action='admin.php' method='get'><input class='btn btn-link' type='submit' name='disconnect' value='Déconnexion'></form></li>";
+            if(isset($_GET['disconnect'])){
+                unset($_SESSION['login']);
+                session_destroy();
+                header('Location:connexion.php');
+            }
+        }       ?>
         <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">A propos</a>
         </li>
@@ -35,12 +51,8 @@
         <h1>Table des utilisateurs</h1>
     <table class="tableadmin">
 <?php
-$db=mysqli_connect('localhost','root','L@Platef0rme','moduleconnexion');
-$req="SELECT * FROM `utilisateurs`";
-$query=mysqli_query($db,$req);
-$assoc_results=mysqli_fetch_assoc($query);
-$all_results=mysqli_fetch_all($query);
 
+if(isset($_SESSION['login'])){
 foreach($assoc_results as $key=>$value){
     echo "<th>".$key."</th>";
 }
@@ -52,7 +64,8 @@ foreach($all_results as $key=>$values){
     echo "</tr>";
 }
 
-echo "</table>"
+echo "</table>";
+}
 ?>
     </table>
 </main>
@@ -60,8 +73,19 @@ echo "</table>"
 <footer>
     <ul class="list-group">
         <li class="list-group-item middle"><a href="index.php">Accueil</a></li>
-        <li class="list-group-item middle"><a href="connexion.php">Connexion</a></li>
-        <li class="list-group-item middle"><a href="inscription.php>">Inscrivez-vous</a></li>
+        <?php
+        if(!isset($_SESSION['login'])){
+            echo "<li class='list-group-item middle'><a href='connexion.php'>Connexion</a></li><li class='list-group-item middle'><a href='inscription.php'>Inscrivez-vous</a></li>";
+
+        }else{
+            echo "<li class='list-group-item middle paddng'><form action='admin.php' method='get'><input class='btn btn-link' type='submit' name='disconnect' value='Déconnexion'></form></li>";
+            if(isset($_GET['disconnect'])){
+                unset($_SESSION['login']);
+                session_destroy();
+                header('Location:connexion.php');
+            }
+        }
+        ?>
         <li class="list-group-item middle"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">A propos</a>   </li>
     </ul>
 

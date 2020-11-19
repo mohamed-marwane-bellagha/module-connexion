@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 18 nov. 2020 à 13:22
+-- Généré le : jeu. 19 nov. 2020 à 10:05
 -- Version du serveur :  10.4.14-MariaDB
 -- Version de PHP : 7.4.11
 
@@ -44,8 +44,8 @@ INSERT INTO `utilisateurs` (`id`, `login`, `prenom`, `nom`, `password`) VALUES
 (13, 'caca', 'cac', 'caca', 'caca'),
 (22, 'pipi', 'pipi', 'pipi', 'pipi'),
 (23, 'tata', 'tata', 'tata', 'tata'),
-(24, 'ruben', 'ruben', 'ruben', 'ruben'),
-(25, 'toto', 'toto', 'toto', 'toto');
+(24, 'tonton', 'ruben', 'ruben', 'ruben'),
+(26, 'adrien', 'adri', 'adri', 'adri');
 
 --
 -- Index pour les tables déchargées
@@ -65,7 +65,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
