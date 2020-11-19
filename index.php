@@ -91,7 +91,7 @@ session_start()
         echo "<li class='list-group-item middle'><a href='connexion.php'>Connexion</a></li><li class='list-group-item middle'><a href='inscription.php'>Inscrivez-vous</a></li>";
 
         }else{
-        echo "<li class='list-group-item middle paddng'><form action='index.php' method='get'><input class='nav-link' type='submit' name='disconnect' value='Déconnexion'></form></li>";
+        echo "<li class='list-group-item middle paddng'><form action='index.php' method='get'><input class='btn btn-link' type='submit' name='disconnect' value='Déconnexion'></form></li>";
         if(isset($_GET['disconnect'])){
         unset($_SESSION['login']);
         session_destroy();

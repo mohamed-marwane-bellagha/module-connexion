@@ -86,9 +86,15 @@ session_start();
         }
     }
     if ($signal==0){
-        $req3="UPDATE `utilisateurs` SET `login`='{$login}',`nom`='{$nom}',`prenom`='{$prenom}',`password`='{$password}' WHERE `login`='{$_SESSION['login']}'";
+        $req3="UPDATE `utilisateurs` SET `login`='{$login}',`prenom`='{$prenom}',`nom`='{$nom}',`password`='{$password}' WHERE `login`='{$_SESSION['login']}'";
         $query3=mysqli_query($db,$req3);
         unset($_COOKIE['id']);
+        $_SESSION['login']=$login;
+        $_SESSION['prenom']=$prenom;
+        $_SESSION['nom']=$nom;
+        $_SESSION['password']=$password;
+        header("Location:profil.php");
+
     }
     }
     if(isset($_GET['disconnect'])){

@@ -80,13 +80,13 @@ session_start()
                         session_start();
                         header('Location:profil.php');
                         $_SESSION['login']=$login;
-                        $_SESSION['nom']=$all_results[$i][2];
-                        $_SESSION['prenom']=$all_results[$i][3];
+                        $_SESSION['prenom']=$all_results[$i][2];
+                        $_SESSION['nom']=$all_results[$i][3];
                         $_SESSION['password']=$password;
-                        var_dump($_SESSION['login']);
                     }
                     else{
                         echo "Rentrez des informations correctes";
+                        break;
                     }
 
                 }
