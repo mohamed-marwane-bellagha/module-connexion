@@ -50,6 +50,7 @@ session_start();
     <form action="profil.php" method="get" class="moduleform">
         <fieldset class="formfieldset">
     <?php
+    if(isset($_SESSION['login'])){
     foreach($_SESSION as $key=>$value){
     if($key!=="id"){
         echo "<label for=".$key.">".ucfirst($key)."</label>";
@@ -84,7 +85,7 @@ session_start();
         }
     }
     if ($signal==0){
-        $req3="UPDATE `utilisateurs` SET `login`='{$login}',`prenom`='{$prenom}',`nom`='{$nom}',`password`='{$password}' WHERE `login`='{$_SESSION[' ']}'";
+        $req3="UPDATE `utilisateurs` SET `login`='{$login}',`prenom`='{$prenom}',`nom`='{$nom}',`password`='{$password}' WHERE `login`='{$_SESSION['login']}'";
         $query3=mysqli_query($db,$req3);
         unset($_COOKIE['id']);
         $_SESSION['login']=$login;
@@ -98,6 +99,8 @@ session_start();
     if(isset($_GET['disconnect'])){
         session_destroy();
         header('Location:connexion.php');
+    }}else{
+        header("Location:index.php");
     }
     ?>
         </fieldset>

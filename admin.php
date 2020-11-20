@@ -47,12 +47,10 @@ session_start();
 </header>
 <main>
 
-    <div class="tablecontainer">
-        <h1>Table des utilisateurs</h1>
-    <table class="tableadmin">
 <?php
 
-if(isset($_SESSION['login'])){
+if(isset($_SESSION['login']) && $_SESSION['login']=="admin"){
+    echo "<div class='tablecontainer'><h1>Table des utilisateurs</h1><table class='tableadmin'>";
 foreach($assoc_results as $key=>$value){
     echo "<th>".$key."</th>";
 }
@@ -65,6 +63,9 @@ foreach($all_results as $key=>$values){
 }
 
 echo "</table>";
+}
+else{
+    header("Location:index.php");
 }
 ?>
     </table>
