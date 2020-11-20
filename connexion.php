@@ -57,10 +57,11 @@ session_start()
             </div>
             <input type="submit" class="btn btn-primary btn2" name="submit"value="Submit">
             <?php
-            $db=mysqli_connect('localhost','root','L@Platef0rme','moduleconnexion');
+            $db=mysqli_connect('localhost','root','','moduleconnexion');
             $req="SELECT * FROM `utilisateurs`";
             $query=mysqli_query($db,$req);
             $all_results=mysqli_fetch_all($query);
+
             foreach($_GET as $key=>$value){
                 if($key=="login"){
                     $login=$value;
@@ -83,12 +84,12 @@ session_start()
                         $_SESSION['prenom']=$all_results[$i][2];
                         $_SESSION['nom']=$all_results[$i][3];
                         $_SESSION['password']=$password;
-                    }
-                    else{
-                        echo "Rentrez des informations correctes";
-                        break;
+                        var_dump($_SESSION);
                     }
 
+                }
+                if (!isset($_SESSION['login']) && isset($login)){
+                    echo "Rentrez des informations corrects";
                 }
             }
 

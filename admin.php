@@ -1,5 +1,5 @@
 <?php
-$db=mysqli_connect('localhost','root','L@Platef0rme','moduleconnexion');
+$db=mysqli_connect('localhost','root','','moduleconnexion');
 $req="SELECT * FROM `utilisateurs`";
 $query=mysqli_query($db,$req);
 $assoc_results=mysqli_fetch_assoc($query);

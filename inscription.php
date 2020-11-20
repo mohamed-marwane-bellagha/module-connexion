@@ -68,12 +68,9 @@ session_start()
         </div>
         <input type="submit" class="btn btn-primary" name="submit"value="Submit">
             <?php
-
-
             foreach($_POST as $key=>$value){
                 if($key=="login"){
                     $login=$value;
-
                 }
                 if($key=="prenom"){
                     $prenom=$value;
@@ -89,7 +86,7 @@ session_start()
                 }
             }
             if(isset($_POST['submit'])){
-            $db=mysqli_connect('localhost','root','L@Platef0rme','moduleconnexion');
+            $db=mysqli_connect('localhost','root','','moduleconnexion');
             $req2="SELECT * FROM `utilisateurs`";
             $query2=mysqli_query($db,$req2);
             $all_results=mysqli_fetch_all($query2);
@@ -127,7 +124,7 @@ session_start()
         <li class="list-group-item middle"><a href="index.php">Accueil</a></li>
         <?php
         if(!isset($_SESSION['login'])){
-            echo "<li class='list-group-item middle'><a href='connexion.php'>Connexion</a></li><li class='list-group-item middle'><a href='inscription.php'>Inscrivez-vous</a></li>";
+            echo "<li class='list-group-item middle'><a href='connexion.php'>Connexion</a></li><li class='list-group-item middle caca'><a href='inscription.php'>Inscrivez-vous</a></li>";
 
         }else{
             echo "<li class='list-group-item middle paddng'><form action='inscription.php' method='get'><input class='btn btn-link' type='submit' name='disconnect' value='Déconnexion'></form></li>";

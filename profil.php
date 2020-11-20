@@ -1,11 +1,9 @@
 <?php
-$db=mysqli_connect('localhost','root','L@Platef0rme','moduleconnexion');
+$db=mysqli_connect('localhost','root','','moduleconnexion');
 $req="SELECT * FROM `utilisateurs` WHERE `id`={$_COOKIE['id']}";
 $query=mysqli_query($db,$req);
 $all_results=mysqli_fetch_assoc($query);
 session_start();
-
-
 
 ?>
 <!DOCTYPE html>
@@ -58,6 +56,7 @@ session_start();
         echo "<input type='text' id=".$key." name=".$key." value=".$value.">";
     }
     }
+    var_dump($_SESSION);
     echo " <input type='submit' class='btn btn-primary btn2' name='submit'value='Submit'>";
     echo " <input type='submit' class='btn btn-primary btn2' name='disconnect'value='Deconnecte-Moi'>";
     if(isset($_GET['submit'])){
@@ -86,7 +85,7 @@ session_start();
         }
     }
     if ($signal==0){
-        $req3="UPDATE `utilisateurs` SET `login`='{$login}',`prenom`='{$prenom}',`nom`='{$nom}',`password`='{$password}' WHERE `login`='{$_SESSION['login']}'";
+        $req3="UPDATE `utilisateurs` SET `login`='{$login}',`prenom`='{$prenom}',`nom`='{$nom}',`password`='{$password}' WHERE `login`='{$_SESSION[' ']}'";
         $query3=mysqli_query($db,$req3);
         unset($_COOKIE['id']);
         $_SESSION['login']=$login;
