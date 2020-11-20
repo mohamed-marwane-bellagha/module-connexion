@@ -56,7 +56,6 @@ session_start();
         echo "<input type='text' id=".$key." name=".$key." value=".$value.">";
     }
     }
-    var_dump($_SESSION);
     echo " <input type='submit' class='btn btn-primary btn2' name='submit'value='Submit'>";
     echo " <input type='submit' class='btn btn-primary btn2' name='disconnect'value='Deconnecte-Moi'>";
     if(isset($_GET['submit'])){
