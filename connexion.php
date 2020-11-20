@@ -84,7 +84,6 @@ session_start()
                         $_SESSION['prenom']=$all_results[$i][2];
                         $_SESSION['nom']=$all_results[$i][3];
                         $_SESSION['password']=$password;
-                        var_dump($_SESSION);
                     }
 
                 }
